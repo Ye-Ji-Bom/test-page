@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Webzine with Table of Contents</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <style>
+        :root { --flip-speed: 0.8s; --p-width: 400px; --p-height: 600px; }
+        body { margin: 0; background: #111; color: white; font-family: sans-serif; overflow: hidden; display: flex; flex-direction: column; height: 100vh; }
+        
+        /* 컨트롤바 */
+        .toolbar { height: 60px; background: #000; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid #333; padding: 0 20px; }
+        .btn-group { display: flex; align-items: center; background: #222; padding: 5px 10px; border-radius: 25px; border: 1px solid #444; gap: 5px; }
+        button { background: transparent; color: white; border: none; padding: 8px 12px; cursor: pointer; font-size: 13px; font-weight: bold; }
+        button:hover { color: #3498db; }
+
+        /* 목차 사이드바 */
+        #toc-sidebar {
+            position: fixed; left: -300px; top: 0; width: 280px; height: 100%;
+            background: rgba(0, 0, 0, 0.95); z-index: 2000; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-right: 1px solid #333; padding-top: 20px; overflow-y: auto;
+        }
+        #toc-sidebar.active { left: 0; }
+        .toc-header { padding: 20px; font-size: 18px; border-bottom: 1px solid #444; font-weight: bold; display: flex; justify-content: space-between; }
+        .toc-item { padding: 15px 20px; cursor: pointer; border-bottom: 1px solid #222; transition: 0.2s; font-size: 14px; }
+        .toc-item:hover { background: #3498db; color: white; }
+        .toc-close { cursor: pointer; color: #888; }
+
+        /* 오버레이 */
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1500; display: none; }
+        #overlay.active { display: block; }
+
+        /* 뷰어 영역 */
+        #viewer-wrapper { flex: 1; display: flex; justify-content: center; align-items: center; perspective: 3000px; position: relative; }
+        .book { position: relative; width: calc(var(--p-width) * 2); height: var(--p-height); transform-style: preserve-3d; transition: all 0.3s ease; }
+
+        @media (max-width: 767px) {
+            .book { width: var(--p-width); }
+            #base-l, .flip-engine { display: none !important; }
+            #base-r { width: 100% !important; right: 0 !important; border-radius: 8px !important; }
+            .mobile-touch-area { position: absolute; top: 0; bottom: 0; width: 50%; z-index: 500; display: block !important; }
+            #touch-left { left: 0; } #touch-right { right: 0; }
+        }
+        .mobile-touch-area { display: none; }
+        .page-static { position: absolute; width: 50%; height: 100%; top: 0; background: white; overflow: hidden; z-index: 1; box-shadow: 0 0 15px rgba(0,0,0,0.5); }
+        #base-l { left: 0; border-radius: 8px 0 0 8px; cursor: pointer; }
+        #base-r { right: 0; border-radius: 0 8px 8px 0; cursor: pointer; }
+
+        /* 플립 엔진 */
+        .flip-engine { position: absolute; width: 50%; height: 100%; transform-style: preserve-3d; transition: transform var(--flip-speed) cubic-bezier(0.15, 0, 0.15, 1); z-index: 100; pointer-events: none; visibility: hidden; }
+        #flip-next { right: 0; transform-origin: left center; }
+        #flip-next.active { visibility: visible; transform: rotateY(-180deg); }
+        #flip-prev { left: 0; transform-origin: right center; }
+        #flip-prev.active { visibility: visible; transform: rotateY(180deg); }
+        .face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; background: white; overflow: hidden; }
+        .face-back { transform: rotateY(180deg); }
+        #flip-prev .face-back { transform: rotateY(-180deg); }
+        canvas { width: 100%; height: 100%; display: block; }
+    </style>
+</head>
+<body>
+
+    <audio id="flip-sound" src="https://www.soundjay.com/misc/sounds/page-flip-01a.mp3" preload="auto"></audio>
+
+    <div id="overlay" onclick="toggleTOC()"></div>
+    <div id="toc-sidebar">
+        <div class="toc-header">
+            목차 <span class="toc-close" onclick="toggleTOC()">&times;</span>
+        </div>
+        <div class="toc-item" onclick="goToPage(1)">표지 (Page 1)</div>
+        <div class="toc-item" onclick="goToPage(2)">기획 특집 (Page 2-3)</div>
+        <div class="toc-item" onclick="goToPage(4)">인터뷰 (Page 4-5)</div>
+        <div class="toc-item" onclick="goToPage(6)">갤러리 (Page 6-7)</div>
+        <div class="toc-item" onclick="goToPage(8)">마지막 페이지 (Page 8)</div>
+    </div>
+
+    <div class="toolbar">
+        <div class="btn-group">
+            <button onclick="toggleTOC()">☰ 목차</button>
+        </div>
+        <div class="btn-group">
+            <button id="prev-btn">◀</button>
+            <span id="page-info" style="font-size: 12px; min-width: 50px; text-align: center;">1 / -</span>
+            <button id="next-btn">▶</button>
+        </div>
+        <div class="btn-group">
+            <button id="zoom-out">－</button>
+            <button id="zoom-in">＋</button>
+        </div>
+    </div>
+
+    <div id="viewer-wrapper">
+        <div id="touch-left" class="mobile-touch-area" onclick="movePrev()"></div>
+        <div id="touch-right" class="mobile-touch-area" onclick="moveNext()"></div>
+        <div class="book" id="book-container">
+            <div id="base-l" class="page-static" onclick="movePrev()"><canvas id="c-base-l"></canvas></div>
+            <div id="base-r" class="page-static" onclick="moveNext()"><canvas id="can-base-r"></canvas></div>
+            <div id="flip-next" class="flip-engine">
+                <div class="face face-front"><canvas id="c-flip-next-f"></canvas></div>
+                <div class="face face-back"><canvas id="c-flip-next-b"></canvas></div>
+            </div>
+            <div id="flip-prev" class="flip-engine">
+                <div class="face face-front"><canvas id="c-flip-prev-f"></canvas></div>
+                <div class="face face-back"><canvas id="c-flip-prev-b"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const url = 'sample01.pdf';
+        let pdfDoc = null, pageNum = 1, scale = 1.0, isAnimating = false;
+        const sound = document.getElementById('flip-sound');
+
+        // 목차 토글
+        function toggleTOC() {
+            document.getElementById('toc-sidebar').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+
+        // 특정 페이지 이동
+        async function goToPage(num) {
+            if (isAnimating || num === pageNum) return;
+            // 2페이지 모드일 때 홀수 페이지로 맞춰주는 로직
+            pageNum = (num % 2 === 0 && num !== 1) ? num : num;
+            toggleTOC();
+            await initView();
+        }
+
+        const playFlipSound = () => { sound.currentTime = 0; sound.play().catch(()=>{}); };
+        const isMobile = () => window.innerWidth < 768;
+
+        async function autoFitScale() {
+            const page = await pdfDoc.getPage(1);
+            const viewport = page.getViewport({ scale: 1.0 });
+            const vHeight = window.innerHeight - 100;
+            const vWidth = isMobile() ? (window.innerWidth - 40) : (window.innerWidth - 60) / 2;
+            scale = Math.min(vHeight / viewport.height, vWidth / viewport.width);
+        }
+
+        async function render(num, canvas) {
+            if (num < 1 || num > pdfDoc.numPages) {
+                canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+                return;
+            }
+            const page = await pdfDoc.getPage(num);
+            const viewport = page.getViewport({ scale: scale * 2 });
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+            document.documentElement.style.setProperty('--p-width', (viewport.width / 2) + 'px');
+            document.documentElement.style.setProperty('--p-height', (viewport.height / 2) + 'px');
+        }
+
+        async function initView() {
+            if (isMobile()) {
+                await render(pageNum, document.getElementById('can-base-r'));
+                document.getElementById('page-info').textContent = `${pageNum} / ${pdfDoc.numPages}`;
+            } else {
+                if (pageNum === 1) {
+                    document.getElementById('base-l').style.visibility = 'hidden';
+                    await render(1, document.getElementById('can-base-r'));
+                } else {
+                    document.getElementById('base-l').style.visibility = 'visible';
+                    await Promise.all([render(pageNum, document.getElementById('c-base-l')), render(pageNum + 1, document.getElementById('can-base-r'))]);
+                }
+                const endPage = Math.min(pageNum + (pageNum === 1 ? 0 : 1), pdfDoc.numPages);
+                document.getElementById('page-info').textContent = pageNum === 1 ? `1 / ${pdfDoc.numPages}` : `${pageNum}-${endPage} / ${pdfDoc.numPages}`;
+            }
+        }
+
+        async function moveNext() {
+            if (isAnimating || pageNum >= pdfDoc.numPages) return;
+            playFlipSound();
+            if (isMobile()) { pageNum++; initView(); }
+            else {
+                isAnimating = true;
+                const currentR = (pageNum === 1) ? 1 : pageNum + 1;
+                const nextL = (pageNum === 1) ? 2 : pageNum + 2;
+                await Promise.all([render(currentR, document.getElementById('c-flip-next-f')), render(nextL, document.getElementById('c-flip-next-b'))]);
+                document.getElementById('flip-next').classList.add('active');
+                setTimeout(async () => {
+                    pageNum = nextL; await initView();
+                    document.getElementById('flip-next').classList.remove('active');
+                    isAnimating = false;
+                }, 850);
+            }
+        }
+
+        async function movePrev() {
+            if (isAnimating || pageNum <= 1) return;
+            playFlipSound();
+            if (isMobile()) { pageNum--; initView(); }
+            else {
+                isAnimating = true;
+                const currentL = pageNum;
+                const targetL = (pageNum === 2) ? 1 : pageNum - 2;
+                await Promise.all([render(currentL, document.getElementById('c-flip-prev-f')), render(targetL + 1, document.getElementById('c-flip-prev-b'))]);
+                document.getElementById('flip-prev').classList.add('active');
+                setTimeout(async () => {
+                    pageNum = targetL; await initView();
+                    document.getElementById('flip-prev').classList.remove('active');
+                    isAnimating = false;
+                }, 850);
+            }
+        }
+
+        document.getElementById('next-btn').onclick = moveNext;
+        document.getElementById('prev-btn').onclick = movePrev;
+        document.getElementById('zoom-in').onclick = () => { scale += 0.1; initView(); };
+        document.getElementById('zoom-out').onclick = () => { if(scale > 0.2) scale -= 0.1; initView(); };
+        window.onresize = () => { if(!isAnimating) autoFitScale().then(initView); };
+
+        pdfjsLib.getDocument(url).promise.then(async doc => {
+            pdfDoc = doc;
+            await autoFitScale();
+            initView();
+        });
+    </script>
+</body>
+</html>
