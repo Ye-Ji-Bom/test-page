@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영상컨텐츠 - 프로젝트 1 | 포트폴리오</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 기하학적 배경 -->
+    <div class="geometric-background">
+        <div class="twinkling-stars"></div>
+        <div class="twinkling-stars stars-layer-2"></div>
+        <div class="twinkling-stars stars-layer-3"></div>
+        <div class="wireframe-globe"></div>
+        <div class="concentric-circle circle-1"></div>
+        <div class="concentric-circle circle-2"></div>
+        <div class="crosshair">
+            <div class="crosshair-line crosshair-vertical"></div>
+            <div class="crosshair-line crosshair-horizontal"></div>
+        </div>
+        <div class="elliptical-orbit orbit-1"></div>
+        <div class="elliptical-orbit orbit-2"></div>
+        <div class="geometric-node node-1"></div>
+        <div class="geometric-node node-2"></div>
+        <div class="geometric-node node-3"></div>
+        <div class="geometric-node node-4"></div>
+        <div class="geometric-node node-5"></div>
+        <div class="geometric-node node-6"></div>
+        <div class="geometric-node node-7"></div>
+        <div class="geometric-node node-8"></div>
+    </div>
+    
+    <!-- 은하수 커서 -->
+    <div class="galaxy-cursor"></div>
+    
+    <!-- 네비게이션 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html?skipIntro=true">Portfolio</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html?skipIntro=true#home" class="nav-link">홈</a></li>
+                <li><a href="../index.html?skipIntro=true#about" class="nav-link">소개</a></li>
+                <li><a href="../index.html?skipIntro=true#skills" class="nav-link">기술</a></li>
+                <li><a href="../index.html?skipIntro=true#projects" class="nav-link">프로젝트</a></li>
+                <li><a href="../index.html?skipIntro=true#contact" class="nav-link">연락처</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 프로젝트 상세 섹션 -->
+    <section class="project-detail">
+        <div class="container">
+            <div class="project-detail-header">
+                <a href="project-video-select.html" class="back-link">← 프로젝트 선택으로 돌아가기</a>
+                <h1 class="project-detail-title">영상컨텐츠디자인 - 영화 시퀀스 타이틀</h1>
+                <p class="project-detail-subtitle">시간적 흐름과 스토리텔링이 있는 영상 콘텐츠 제작</p>
+                <div class="project-detail-tags">
+                    <span class="tag">영상</span>
+                    <span class="tag">모션그래픽</span>
+                    <span class="tag">편집</span>
+                </div>
+            </div>
+            
+            <div class="project-detail-content">
+                <div class="project-detail-image">
+                    <img src="../img/video contents design web 01.jpg" alt="영상컨텐츠 프로젝트 1" class="project-detail-img">
+                </div>
+                <div class="video-play-section">
+                    <button class="video-play-btn" onclick="openVideoModal()">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="40" fill="rgba(255, 255, 255, 0.9)"/>
+                            <path d="M32 24L32 56L56 40L32 24Z" fill="#000"/>
+                        </svg>
+                        <span>영상 보기</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 유튜브 영상 팝업 모달 -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-overlay" onclick="closeVideoModal()"></div>
+        <div class="video-modal-content">
+            <button class="video-modal-close" onclick="closeVideoModal()">×</button>
+            <div class="video-modal-iframe-container">
+                <iframe id="youtubeVideo" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // 유튜브 영상 ID
+        const youtubeVideoId = 'hs1PzDFX72c';
+        
+        function openVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('youtubeVideo');
+            // 유튜브 임베드 URL 생성
+            iframe.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0`;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('youtubeVideo');
+            modal.classList.remove('active');
+            iframe.src = ''; // 영상 정지
+            document.body.style.overflow = 'auto';
+        }
+        
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+    </script>
+</body>
+</html>
+

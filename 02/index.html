@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오 | 메인</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script>
+        // 페이지 로드 즉시 인트로 표시 여부 결정 (스크립트 로드 전에 실행)
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const skipIntroParam = urlParams.get('skipIntro') === 'true';
+            const referrer = document.referrer;
+            
+            // 서브페이지에서 돌아온 경우만 체크 (F5나 직접 접근 시에는 referrer가 없거나 같음)
+            const isFromSubpage = referrer && referrer !== window.location.href && (
+                referrer.includes('html/project-brand') ||
+                referrer.includes('html/project-artwork') ||
+                referrer.includes('html/project-video') ||
+                referrer.includes('html/project-exhibition')
+            );
+            
+            // URL 파라미터가 있거나 서브페이지에서 돌아온 경우만 인트로 건너뛰기
+            if (skipIntroParam || isFromSubpage) {
+                document.addEventListener('DOMContentLoaded', function() {
+                    const introOverlay = document.querySelector('.intro-overlay');
+                    const body = document.body;
+                    if (introOverlay) {
+                        introOverlay.classList.add('skip-intro');
+                        body.classList.remove('intro-active');
+                    }
+                });
+            }
+        })();
+    </script>
+</head>
+<body>
+    <!-- 인트로 -->
+    <div class="intro-overlay">
+        <button class="intro-skip" aria-label="스킵">SKIP</button>
+        <div class="intro-content">
+            <div class="intro-geometric">
+                <div class="intro-circle"></div>
+                <div class="intro-line intro-line-1"></div>
+                <div class="intro-line intro-line-2"></div>
+            </div>
+            <div class="intro-text">
+                <h1 class="intro-title">PORTFOLIO</h1>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 기하학적 배경 -->
+    <div class="geometric-background">
+        <!-- 반짝이는 별들 -->
+        <div class="twinkling-stars"></div>
+        <div class="twinkling-stars stars-layer-2"></div>
+        <div class="twinkling-stars stars-layer-3"></div>
+        
+        <div class="wireframe-globe"></div>
+        <div class="concentric-circle circle-1"></div>
+        <div class="concentric-circle circle-2"></div>
+        <div class="crosshair">
+            <div class="crosshair-line crosshair-vertical"></div>
+            <div class="crosshair-line crosshair-horizontal"></div>
+        </div>
+        <div class="elliptical-orbit orbit-1"></div>
+        <div class="elliptical-orbit orbit-2"></div>
+        <div class="geometric-node node-1"></div>
+        <div class="geometric-node node-2"></div>
+        <div class="geometric-node node-3"></div>
+        <div class="geometric-node node-4"></div>
+        <div class="geometric-node node-5"></div>
+        <div class="geometric-node node-6"></div>
+        <div class="geometric-node node-7"></div>
+        <div class="geometric-node node-8"></div>
+    </div>
+    
+    <!-- 은하수 커서 -->
+    <div class="galaxy-cursor"></div>
+    
+    <!-- 네비게이션 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="#home">Portfolio</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">홈</a></li>
+                <li><a href="#about" class="nav-link">소개</a></li>
+                <li><a href="#skills" class="nav-link">기술</a></li>
+                <li><a href="#projects" class="nav-link">프로젝트</a></li>
+                <li><a href="#contact" class="nav-link">연락처</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero 섹션 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-word">PORT</span><span class="title-word sparkle">FOLIO</span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span class="subtitle-text sparkle-text">CREATIVE</span> 
+                    <span class="subtitle-text">DEVELOPER</span>
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary sparkle-btn">PROJECTS</a>
+                    <a href="#contact" class="btn btn-secondary">CONTACT</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About 섹션 -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>‘시각’을 넘어 ‘경험’을 디자인합니다.</h3>
+                    <p>
+                        저는 패키징의 물리적 경험부터 전시 공간의 입체적 스토리텔링
+                        그리고 영상 콘텐츠의 시간적 흐름까지, 시각디자인의 경계를 넓히는 작업에 몰두하고 있습니다.
+                    </p>
+                    <p>
+                        저의 탐구와 성장의 기록을 통해 다음 단계를 상상해 보세요.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="6">0</div>
+                            <div class="stat-label">완료 프로젝트</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="15">0</div>
+                            <div class="stat-label">크리에이티브 작업</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="3">0</div>
+                            <div class="stat-label">학년</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-wrapper">
+                        <img src="img/profile_photo.jpg" alt="프로필 이미지" class="profile-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills 섹션 -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Design Ability</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-name">미적 감각</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">레이아웃 배치</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">타이포그래피</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">컬러 감각</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Adobe Tools</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-name">Adobe Photoshop</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="98"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Adobe Illustrator</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Adobe InDesign</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Adobe After Effects</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Design Tools</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-name">Figma</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="72"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Sketch</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="63"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Blender</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="62"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Cinema 4D</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="60"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects 섹션 -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="img/브랜드패키지 썸네일.jpg" alt="브랜드패키지디자인" class="project-thumbnail">
+                        <div class="project-overlay">
+                            <a href="html/project-brand-select.html" class="project-link">자세히 보기</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>브랜드패키지디자인</h3>
+                        <p>브랜드 아이덴티티를 반영한 패키징 디자인 작업</p>
+                        <div class="project-tags">
+                            <span class="tag">패키징</span>
+                            <span class="tag">브랜딩</span>
+                            <span class="tag">디자인</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="img/아트워크 썸네일.jpg" alt="아트워크" class="project-thumbnail">
+                        <div class="project-overlay">
+                            <a href="html/project-artwork-1.html" class="project-link">자세히 보기</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>아트워크</h3>
+                        <p>창의적 표현과 미적 감각이 담긴 아트워크 제작</p>
+                        <div class="project-tags">
+                            <span class="tag">일러스트</span>
+                            <span class="tag">그래픽</span>
+                            <span class="tag">아트</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="img/영상컨텐츠디자인 썸네일.jpg" alt="영상컨텐츠" class="project-thumbnail">
+                        <div class="project-overlay">
+                            <a href="html/project-video-select.html" class="project-link">자세히 보기</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>영상컨텐츠</h3>
+                        <p>시간적 흐름과 스토리텔링이 있는 영상 콘텐츠 제작</p>
+                        <div class="project-tags">
+                            <span class="tag">영상</span>
+                            <span class="tag">모션그래픽</span>
+                            <span class="tag">편집</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="img/전시요소 썸네일.jpg" alt="전시요소" class="project-thumbnail">
+                        <div class="project-overlay">
+                            <a href="html/project-exhibition.html" class="project-link">자세히 보기</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>전시요소</h3>
+                        <p>공간과 입체적 스토리텔링을 담은 전시 디자인</p>
+                        <div class="project-tags">
+                            <span class="tag">전시</span>
+                            <span class="tag">공간디자인</span>
+                            <span class="tag">인스톨레이션</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact 섹션 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>함께 일하고 싶으신가요?</h3>
+                    <p>새로운 프로젝트나 협업 기회에 대해 이야기하고 싶으시다면 언제든지 연락주세요!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <h4>이메일</h4>
+                                <p>#######@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📷</div>
+                            <div>
+                                <h4>인스타그램</h4>
+                                <p>#######</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h4>위치</h4>
+                                <p>#######</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">GitHub</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                        <a href="#" class="social-link">Blog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 #######. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
