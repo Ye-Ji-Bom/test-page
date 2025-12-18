@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>####### PORTFOLIO</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+    <script>
+        window.onload = function() {
+            if (window.location.hash) {
+                 window.location.hash = "";
+            }
+            window.scrollTo(0, 0); 
+        };
+    </script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item">HOME</a> 
+            
+            <ul class="nav-item-right">
+                <li><a href="#work_approach">DESIGN APPROACH</a></li>
+                <li><a href="#about">PROFILE</a></li>
+                <li><a href="#contact_project">WORK</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="portfolio-hero">
+        <h1 class="portfolio-title visually-hidden">####### PORTFOLIO</h1> 
+        <p class="subtitle">
+            <!-- 디자인의 ‘왜’를 고민하고,<br>
+            본질을 형태로 풀어내는 디자이너입니다. -->
+        </p>
+        <!-- <a href="#work_approach" class="start-button">WHY?</a> -->
+    </section>
+    
+    <main>
+        
+        <section class="design-approach" id="work_approach">
+            <h2>Design Approach</h2>
+            <p class="description">
+                브랜드의 ‘무엇’을 드러내기보다, ‘왜’ 존재하는가라는 본질을 시각적으로 해석합니다.<br>
+                논리적인 구조 안에서 감각을 정제해, 브랜드의 핵심 가치가 자연스럽게 전달되도록 합니다.
+            </p>
+            <!-- <div class="keywords">
+                Research · Concept · Visual Language · Consistency
+            </div> -->
+        </section>
+        
+        <section class="about-section" id="about">
+            <div class="designer-image-placeholder">
+                <img src="img/profile-01.jpg" alt="디자이너 최민서의 프로필 사진">
+            </div>
+            <div class="about-designer">
+                <h3>About the Designer</h3>
+                <p class="bio-korean">
+                    저는 디자인을 하나의 '질문과 답변의 과정'으로 바라보는 디자이너입니다. <br>
+                    형태를 만들기 이전에, 그 안에 담길 ‘의도와 맥락’을 가장 먼저 탐구합니다. <br>
+                    브랜드만의 목적과 메시지를 명확히 정의하고, 그 본질이 가장 자연스럽게  <br>
+                    드러나는 시각 언어를 찾습니다.   <br>
+                    저의 작업 과정에서는 감각보다 이유를 우선하지만, 그 안에서도 감정선이   <br>
+                    드러날 수 있도록 균형을 맞춥니다.   <br>
+                    때문에 디자인은 본질이 스며든 형태로 완성되어야 한다고 믿습니다. <br>
+                </p>
+                <p class="bio-keywords">
+                    #브랜드 본질 정의   #브랜드 메시지 명료화   #본질 중심 미학<br>
+                </p>
+            </div>
+        </section>
+        
+        <section class="project-grid" id="contact_project">
+             <h2 class="visually-hidden">My Projects</h2> 
+            
+            <a href="detail-01.html" class="project-item item-1">
+                <div class="project-text">IDENTITY DESIGN</div>
+            </a>
+            <a href="detail-02.html" class="project-item item-2">
+                <div class="project-text">LIFESTYLE DESIGN</div>
+            </a>
+            <a href="detail-03.html" class="project-item item-3">
+                <div class="project-text">PUBLIC & SPATIAL IDENTITY</div>
+            </a>
+            <a href="detail-04.html" class="project-item item-4">
+                <div class="project-text">EDITORIAL DESIGN</div>
+            </a>
+        </section>
+        
+        <section class="footer-contact" id="contact">
+             <h3>Contact Me</h3>
+             <p>Email: #######@naver.com</p>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 by #######</p>
+    </footer>
+</body>
+</html>

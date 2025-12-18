@@ -1,0 +1,183 @@
+/* 글로벌 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- 레이아웃 공통 설정 --- */
+.top-bar, .sub-detail-main, .sub-detail-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- 1. 상단 바 --- */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 10px; 
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.back-link {
+    color: #555;
+}
+
+.project-nav a {
+    margin-left: 40px;
+    color: #555;
+}
+
+/* --- 2. 서서브 헤더 --- */
+.sub-detail-header {
+    padding: 0 10px 50px 10px; 
+}
+
+.sub-detail-title {
+    font-size: 16px; 
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.sub-detail-description {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.6;
+}
+
+/* --- 3. 포트폴리오 긴 이미지 영역 --- */
+.sub-detail-content {
+    padding: 0 80px 50px 80px;
+}
+
+.long-image-container {
+    width: 100%;
+    /* ⚠️ 공통 min-height 제거: 각 이미지 클래스가 높이를 담당합니다. */
+    background-color: #b0b0b0; 
+    margin-bottom: 30px; 
+    
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat; 
+}
+
+/* 📸 12개 이미지에 개별 높이 및 URL 적용 */
+
+/*웹목업 html css*/
+.web_img_box{width: 100%; max-width: 1600px; margin: 0 auto; padding-bottom: 50px;}
+.clear{clear: both;}
+
+
+/* 1번 이미지 (예시: 1번 프로젝트의 첫 번째 서브 페이지) */
+.long-image-container.image-1 { 
+    background-image: url('../../img/detail_image_01_01.jpg'); 
+    min-height: 6800px; /* ⚠️ 실제 이미지 길이로 조정하세요. */
+}
+
+/* 2번 이미지 */
+.long-image-container.image-2 { 
+    background-image: url('../../img/detail_image_01_02.jpg'); 
+    min-height: 3200px; /* ⚠️ 실제 이미지 길이로 조정하세요. */
+}
+
+/* 3번 이미지 */
+.long-image-container.image-3 { 
+    background-image: url('../../img/detail_image_02_01.jpg'); 
+    min-height: 5500px; /* ⚠️ 실제 이미지 길이로 조정하세요. */
+}
+
+/* 4번 이미지 */
+.long-image-container.image-4 { 
+    background-image: url('../../images.jpg/image-4.jpg'); 
+    min-height: 10000px; /* ⚠️ 실제 이미지 길이로 조정하세요. */
+}
+
+/* 5번 이미지 */
+.long-image-container.image-5 { 
+    background-image: url('../../images.jpg/image-5.jpg'); 
+    min-height: 18000px; /* ⚠️ 실제 이미지 길이로 조정하세요. */
+}
+
+/* 6번 이미지 */
+.long-image-container.image-6 { 
+    background-image: url('../../images.jpg/sub_detail_06.jpg'); 
+    min-height: 5200px; /* ⚠️ 실제 이미지 길이로 조정하세요. */
+}
+
+/* 7번 이미지 */
+.long-image-container.image-7 { 
+    background-image: url('../../images.jpg/image-7.jpg'); 
+    min-height: 17000px; /* ⚠️ 실제 이미지 길이로 조정하세요. */
+}
+
+/* 8번 이미지 */
+.long-image-container.image-8 { 
+    background-image: url('../../images.jpg/sub_detail_08.jpg'); 
+    min-height: 3900px; /* ⚠️ 실제 이미지 길이로 조정하세요. */
+}
+
+/* 9번 이미지 */
+/* .long-image-container.image-9 { 
+    background-image: url('../../images.jpg/image-9.jpg'); 
+    min-height: 17000px; /* ⚠️ 실제 이미지 길이로 조정하세요. */
+ */
+
+/* 10번 이미지 */
+.long-image-container.image-10 { 
+    background-image: url('../../images.jpg/sub_detail_10.jpg'); 
+    min-height: 3000px; /* ⚠️ 실제 이미지 길이로 조정하세요. */
+}
+
+/* 11번 이미지 */
+.long-image-container.image-11 { 
+    background-image: url('../../images.jpg/sub_detail_11.jpg'); 
+    min-height: 4600px; /* ⚠️ 실제 이미지 길이로 조정하세요. */
+}
+
+12번 이미지
+/* .long-image-container.image-12 { 
+    background-image: url('../../images.jpg/sub_detail_12.jpg'); 
+    min-height: 3500px; /* ⚠️ 실제 이미지 길이로 조정하세요. */
+ */
+
+
+/* --- 4. 푸터 --- */
+.sub-detail-footer {
+    padding: 30px 80px;
+    font-size: 12px;
+    color: #999;
+    text-align: left;
+}
+
+/* --- 반응형 디자인 --- */
+@media (max-width: 768px) {
+    .top-bar, .sub-detail-main, .sub-detail-footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .top-bar { padding-top: 40px; padding-bottom: 40px; }
+    .sub-detail-header, .sub-detail-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    /* 모바일에서는 기본 높이를 낮춥니다. */
+    .long-image-container {
+        min-height: 2000px !important; 
+    }
+}

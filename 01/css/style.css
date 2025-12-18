@@ -1,0 +1,356 @@
+
+/* 이동 타겟이 되는 요소의 ID에 적용합니다. */
+#work_approach {
+    scroll-margin-top: -550px; /* 원하는 간격(픽셀)을 설정합니다. */
+}
+
+#about {
+    scroll-margin-top: 6px; /* 이 요소만 다른 값으로 설정할 수 있습니다. */
+}
+
+/* 모든 타겟 요소에 동일하게 적용하려면 클래스를 사용할 수도 있습니다. */
+#contact_project {
+    scroll-margin-top: 80px;
+}
+/* 글로벌 스타일 및 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Hero 섹션 전체 화면 채우기를 위한 필수 초기화 */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: rgb(255, 255, 255);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none; 
+}
+
+/* 웹 접근성: 시각적으로만 숨기는 클래스 */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* --- 헤더 및 네비게이션 --- */
+.header {
+    width: 100%;
+    padding: 20px 80px; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100; 
+    color: #000000; 
+    font-size: 14px;
+    font-weight: 500;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-item-right {
+    display: flex;
+}
+
+.nav-item-right li a {
+    margin-left: 40px;
+    letter-spacing: 0.1em;
+}
+
+/* --- Hero 섹션 (화면 전체 꽉 채우기) --- */
+.portfolio-hero {
+    width: 100%;        
+    height: 100vh;      
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* ⚠️ 이미지 경로: css 폴더에서 상위 images 폴더 접근 */
+    background-image: url('../img/main-01.jpg'); 
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat; 
+    
+    color: #fff; 
+    position: relative; 
+    z-index: 1; 
+}
+
+.subtitle {
+    margin-top: 310px;
+    font-size: 16px;
+    color: #000000; 
+    margin-bottom: 30px;
+    line-height: 1.8;
+    /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);  */
+}
+
+.start-button {
+    background-color: rgba(56, 56, 56, 0.9); 
+    color: #ffffff; 
+    border: none;
+    padding: 10px 30px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 2px;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.start-button:hover {
+    background-color: #fff;
+}
+
+/* --- 메인 콘텐츠 섹션 공통 --- */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Hero 섹션 높이만큼 위로 끌어올림 */
+    margin-top: -100vh; 
+    padding: 0; 
+    
+    position: relative;
+    z-index: 2; 
+}
+
+/* ⚠️ 모든 앵커 스크롤 위치를 헤더 아래로 조정 (개별 설정) */
+.design-approach {
+    margin-top: 420px;
+    scroll-margin-top: 100px; 
+    padding: 100vh 80px 100px 80px; 
+    max-width: 1200px; 
+    /* margin: 0 auto; */
+}
+
+.design-approach h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+    letter-spacing: 0.05em;
+}
+
+.design-approach .description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 2.0;
+}
+
+.design-approach .keywords {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 0.1em;
+}
+
+/* --- 2. About & Designer 섹션 (PROFILE 메뉴의 목표) --- */
+.about-section {
+    scroll-margin-top: 120px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 50px 80px 150px 80px; 
+}
+
+.designer-image-placeholder {
+    margin-top: 230px;
+    width: 48%;
+    min-height: 400px;
+    overflow: hidden; 
+}
+
+.designer-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-designer {
+    margin-top: 225px;
+    width: 48%;
+    padding-top: 20px;
+}
+
+.about-designer h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+    letter-spacing: 0.05em;
+}
+
+.about-designer .bio-korean {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 2.0;
+    
+}
+
+.about-designer .bio-keywords {
+    font-size: 15px; 
+    font-weight: 500;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 310px;
+    margin-top: 0px;
+    letter-spacing: 0.05em;
+}
+
+/* --- 3. Project Grid 섹션 (CONTACT 메뉴의 목표) --- */
+.project-grid {
+    scroll-margin-top: 80px; 
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    padding: 0 80px 150px 80px; 
+}
+
+/* ⚠️ a 태그로 변경된 프로젝트 아이템에 대한 스타일 통합 */
+.project-item {
+    aspect-ratio: 1 / 1;
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 30px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 📸 프로젝트 이미지 경로 설정 (css 폴더 기준) */
+.item-1 { background-image: url('../img/project-01.jpg'); } 
+.item-2 { background-image: url('../img/project-02.jpg'); } 
+.item-3 { background-image: url('../img/project-03.jpg'); } 
+.item-4 { background-image: url('../img/project-04.jpg'); } 
+
+
+/* 인터랙션 */
+.project-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); 
+    opacity: 1; 
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.project-item:hover::before { opacity: 0; }
+.project-item:hover { transform: scale(1.01); }
+
+.project-item .project-text {
+    margin-bottom: 420px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.1em;
+    z-index: 2;
+    transition: text-decoration 0.3s;
+}
+
+/* --- 4. Contact 섹션 (ID: contact) --- */
+.footer-contact {
+    padding: 50px 80px 100px 80px; 
+    text-align: center;
+}
+
+/* --- 5. Footer 섹션 --- */
+.footer {
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 80px;
+    background-color: #ffffff;
+    border-top: 1px solid #eee;
+    font-size: 12px;
+    color: #999;
+}
+
+/* --- 반응형 디자인 --- */
+@media (max-width: 768px) {
+    .header, .footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .design-approach {
+        padding: 100vh 20px 80px 20px; 
+    }
+    
+    .about-section, .project-grid, .footer-contact {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .about-section {
+        flex-direction: column;
+        padding-bottom: 80px;
+    }
+
+    .designer-image-placeholder, .about-designer {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+        padding-bottom: 80px;
+    }
+    
+}
+
+@media (max-width: 500px) {
+     .nav-item-right li a{
+        margin-left: 15px;
+        font-size: 11px;
+    }
+}

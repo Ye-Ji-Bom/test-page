@@ -1,0 +1,227 @@
+/* 글로벌 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff; 
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    display: block; 
+}
+
+/* --- 레이아웃 공통 설정 --- */
+.top-bar, .detail-main, .detail-footer {
+    max-width: 1200px; 
+    margin: 0 auto;
+    
+}
+
+/* --- 1. 상단 바 --- */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 80px; 
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    
+}
+
+.back-link {
+    color: #555;
+    display: inline;
+}
+
+.project-nav a {
+    margin-left: 40px;
+    color: #555;
+    display: inline;
+}
+
+/* --- 2. 프로젝트 헤더 --- */
+.project-header {
+    padding: 0 80px 100px 80px; 
+}
+
+.project-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.project-description {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 50px;
+    line-height: 1.8;
+}
+
+/* 프로젝트 정보 (Service, Time) */
+.project-info {
+    display: flex;
+    justify-content: flex-start;
+    gap: 80px; 
+    font-size: 14px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+}
+
+.info-item {
+    display: flex;
+    gap: 15px;
+}
+
+.info-label {
+    font-weight: 500;
+    color: #333;
+}
+
+.info-value {
+    font-weight: 400;
+    color: #777;
+}
+
+/* --- 3. 프로젝트 콘텐츠 (이미지 및 제목) --- */
+.project-content {
+    padding: 0 80px 100px 80px;
+}
+
+.content-item {
+    margin-bottom: 150px; 
+}
+
+.content-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* 이미지 플레이스홀더 기본 스타일 */
+.image-placeholder {
+    width: 100%;
+    min-height: 700px; 
+    background-color: #b0b0b0; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 24px;
+    font-weight: 600;
+    color: #f0f0f0; 
+    letter-spacing: 0.1em;
+
+    /* 배경 이미지 공통 설정 */
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat; 
+}
+
+
+/* 📸 이미지 경로 설정 (최종 수정: 모든 문법 오류와 경로 오류 제거) */
+
+/* --- 1번 프로젝트 상세 이미지 (detail-01.html) --- */
+.item-bg-01-1 { 
+    background-image: url('../../img/detail_image_01_01.jpg'); 
+}
+.item-bg-01-2 { 
+    background-image: url('../../img/detail_image_01_02.jpg'); 
+}
+/* .item-bg-01-3 { 
+    background-image: url('../../images.jpg/detail_image_02_01.jpg'); 
+} */
+
+/* --- 2번 프로젝트 상세 이미지 (detail-02.html) --- */
+.item-bg-02-1 { 
+    background-image: url('../../img/detail_image_02_01.jpg'); /* detail_image_02_01.jpg 대신 일괄 파일명 사용 */
+}
+.item-bg-02-2 { 
+    background-image: url('../../img/detail_image_02_02.jpg'); 
+}
+/* .item-bg-02-3 { 
+    background-image: url('../../images.jpg/detail_image_02_03.jpg'); 
+} */
+
+/* --- 3번 프로젝트 상세 이미지 (detail-03.html) --- */
+.item-bg-03-1 { 
+    background-image: url('../../img/detail_image_03_01.jpg'); 
+}
+.item-bg-03-2 { 
+    background-image: url('../../img/detail_image_03_02.jpg'); 
+}
+/* .item-bg-03-3 { 
+    background-image: url('../../images.jpg/detail_image_03_03.jpg'); 
+} */
+
+/* --- 4번 프로젝트 상세 이미지 (detail-04.html) --- */
+.item-bg-04-1 { 
+    background-image: url('../../img/detail_image_04_01.jpg'); 
+}
+.item-bg-04-2 { 
+    background-image: url('../../img/detail_image_04_02.jpg'); 
+}
+/* .item-bg-04-3 { 
+    background-image: url('../../images.jpg/detail-04-img-3.jpg'); 
+} */
+
+
+/* --- 4. 푸터 --- */
+.detail-footer {
+    padding: 30px 80px;
+    font-size: 12px;
+    color: #999;
+    text-align: left;
+}
+
+/* --- 반응형 디자인 --- */
+@media (max-width: 768px) {
+    .top-bar, .project-header, .project-content, .detail-footer {
+        padding-left: 20px;
+        padding-right: 20px;
+        
+    }
+    
+    .top-bar {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        
+    }
+
+    .project-header {
+        padding-bottom: 50px;
+        
+    }
+    
+    .project-title {
+        font-size: 24px;
+    }
+    
+    .project-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .content-item {
+        margin-bottom: 80px;
+    }
+    
+    .image-placeholder {
+        min-height: 400px;
+    }
+    .project-nav{
+        display: none;
+    }
+}
