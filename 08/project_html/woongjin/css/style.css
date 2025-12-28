@@ -1,0 +1,302 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+/*공통*/
+*{padding: 0;  margin: 0; font-family: 'Noto Sans KR', '맑은 고딕'; box-sizing: border-box;}
+ul{list-style: none}
+body{overflow-x: hidden;}
+a{text-decoration: none; color: #333;}
+
+.big_inner_box{width: 100%; max-width: 1200px; margin: 0 auto;}
+.inner_box{width: 100%; max-width: 1000px; margin: 0 auto;}
+.clear{clear: both;}
+/*공통 끝*/
+
+
+
+/*mo_serch.png*/
+/*-------모바일 가로길이 560px이하일 때 열기-------*/
+@media all and (max-width:560px){
+    
+/*헤더 시작*/
+.header{width: 100%; height: 80px;}
+.logo{float: left; width: 20%; padding-top: 24px; padding-left: 10px;}
+    .logo img{width: 70%;}    
+.menu{float: left; width: 100%; padding-top: 20px;}
+.menu li{width:100%; font-size:16px; text-align: center; padding-bottom: 5px; border-bottom:1px #CCC solid; color: #FFF; background: #fff; padding: 8px 0;}
+    .menu li:nth-child(1){border-top:1px #ccc solid;}
+    .menu li:nth-child(5){border-bottom: none;}
+.r_menu{float: right; }
+.r_menu li{float: left; padding-top: 24px;}
+    .r_menu li:nth-child(2){margin-right: 5px;}
+    .r_menu li:nth-child(2) img{width: 70%;}
+    .r_menu li:nth-child(1){display: none;}
+.hambuger_btn{cursor:pointer;}
+.hambuger_btn img{width: 70%;}    
+/*헤더 끝*/
+
+/*---콘텐츠 부분 시작---*/
+
+/*반복되는 제목스타일*/
+h1{font-size: 26px; padding-left: 10px;}
+.h1_sub_txt{font-size: 16px; margin-bottom: 20px; padding: 0 10px;}
+/*반복되는 제목스타일 끝*/
+
+/*메인이미지*/
+.main_img{width: 100%; margin-bottom: 30px;}
+.main_img img{width: 100%;}
+
+/*콘텐츠 01 박스 시작*/
+.main_con_box01{margin-bottom: 50px;}
+.con_box01_1{width: 100%; margin-top: 20px; margin-bottom: 20px;}
+.con_box01_1 img{width: 100%; padding: 0 10px;}
+.con_box01_1_1{width: 100%; margin-bottom: 1%;}
+.con_box01_1_2{width: 100%;}
+
+/*box01_2 시작*/
+.con_box01_2_bg{width: 100%; background-image: url(../img/icon_bg.png); background-size: cover; background-repeat: no-repeat; height: 460px;}    
+.con_box01_2{width: 100%; height: 230px; text-align: center;}
+.con_box01_2 img{width: 48%}
+.box01_2_left{float: left; width: 48%; margin-right: 2%; height: 230px; padding-top: 50px;}
+.mo_mar-right-0{margin-right: 0;}    
+.box01_2_right{float: right; width: 48%; height: 230px; padding-top: 50px;}
+/*콘텐츠 01 박스 끝*/
+
+/*콘텐츠 02 박스 시작*/
+.main_con_box02{margin-bottom: 50px;}
+.con_box02_1{width: 100%; padding: 2%}
+.con_box02_1 img{width: 100%;}
+.box02_1_left{float: left; width: 49%; margin-right: 2%; margin-bottom: 1%;}
+.box02_1_right{float: left; width: 49%;}
+/*콘텐츠 02 박스 끝*/
+
+/*콘텐츠 03 박스 시작*/
+.main_con_box03{margin-bottom: 5px;}
+.con_box03_1{width: 100%; margin-bottom: 15px; margin-top: 20px; padding: 0 10px;}
+.con_box03_1 img{width: 100%;}
+.con_box03_1_left{float: left; width: 100%;}
+.con_box03_1_right{float: right; width: 100%; margin-top: 1%;}
+.box03_1_right_l{float: left; width: 49%; margin-right: 2%;}
+.box03_1_right_r{float: right; width: 49%;}
+
+.con_box03_2{width: 100%; padding: 0 10px; margin-top: -2%;}
+.con_box03_2 img{width: 100%;}
+.con_box03_2_left{float: left; width: 100%; margin-top: 1%;}
+.con_box03_2_right{float: right; width: 100%;}
+/*콘텐츠 03 박스 끝*/
+/*---콘텐츠 부분 끝---*/
+    
+.mo_mar-right-0{margin-right: 0px;}
+
+/*푸터 시작*/
+.footer{border-top: 1px #999 solid; padding: 40px 0 40px 0; background-color: #333;}
+.footer_left{width: 100%; text-align: center; margin-bottom: 20px;}   
+.footer_center{width: 100%; text-align: center;}
+.f_center_box01{margin-bottom: 10px;}
+.f_center_box01 li{float: left; font-size: 14px; border-right: 1px #999 solid;
+                  padding: 0 17px;}
+    .f_center_box01 li:nth-child(6){border-right: none;}
+    .f_center_box01 li:nth-child(1) a{color: #f8901f;}
+.f_center_box01 li a{color: #999; font-weight: 400;}
+.f_center_box02{font-size: 14px; color: #999; margin-left: 16px;}
+.footer_right{width: 100%; text-align: center; margin-top: 20px;}
+    .footer_right img{width: 40%;}
+/*푸터 끝*/
+        
+    
+}
+/*-------모바일 가로길이 560px이하일 때 닫기-------*/
+
+
+
+/*-------태블릿PC(패드형) 가로길이 561px ~ 960px일 때 열기-------*/
+@media all and (min-width:561px) and (max-width:960px){
+    
+/*헤더 시작*/
+.header{width: 100%; height: 80px;}
+.logo{float: left; width: 20%; padding-top: 23px; padding-left: 14px;}
+.menu{float: left; width: 100%; padding-top: 20px;}
+.menu li{width:100%; font-size:16px; text-align: center; padding-bottom: 5px; border-bottom:1px #CCC solid; color: #FFF; background: #fff; padding: 8px 0;}
+    .menu li:nth-child(1){border-top:1px #ccc solid;}
+    .menu li:nth-child(5){border-bottom: none;}
+.r_menu{float: right; }
+.r_menu li{float: left; padding-top: 30px;}
+    .r_menu li:nth-child(1){margin-right: 20px;}
+        .r_menu li:nth-child(2) img{width: 65%;}
+.hambuger_btn{cursor:pointer; margin-left: 5px;}
+.hambuger_btn img{width: 65%;} 
+/*헤더 끝*/
+
+/*---콘텐츠 부분 시작---*/
+
+/*반복되는 제목스타일*/
+h1{font-size: 30px; padding: 0 10px;}
+.h1_sub_txt{font-size: 16px; margin-bottom: 30px; padding: 0 10px;}
+/*반복되는 제목스타일 끝*/
+
+/*메인이미지*/
+.main_img{width: 100%; margin-bottom: 100px;}
+.main_img img{width: 100%;}
+
+/*콘텐츠 01 박스 시작*/
+.main_con_box01{margin-bottom: 100px;}
+.con_box01_1{width: 100%; margin-top: 20px; margin-bottom: 50px; padding: 0 1%;}
+.con_box01_1 img{width: 100%;}
+.con_box01_1_1{float: left; width: 49%; margin-right: 2%; }
+.con_box01_1_2{float: right; width: 49%;}
+
+/*box01_2 시작*/
+.con_box01_2_bg{width: 100%; background-image: url(../img/icon_bg.png); background-size: cover; background-repeat: no-repeat;}    
+.con_box01_2{width: 100%; height: 180px; text-align: center;}
+.con_box01_2 img{width: 90px;}
+.box01_2_left{float: left; width: 23.5%; margin-right: 2%; height: 180px; padding-top: 40px;}
+.box01_2_right{float: right; width: 23.5%; height: 180px;padding-top: 40px;}
+/*콘텐츠 01 박스 끝*/
+
+/*콘텐츠 02 박스 시작*/
+.main_con_box02{margin-bottom: 100px;}
+.con_box02_1{width: 100%; padding: 0 1%;}
+.con_box02_1 img{width: 100%;}
+.box02_1_left{float: left; width: 23.5%; margin-right: 2%;}
+.box02_1_right{float: right; width: 23.5%;}
+/*콘텐츠 02 박스 끝*/
+
+/*콘텐츠 03 박스 시작*/
+.main_con_box03{margin-bottom: 100px; padding: 0 1%;}
+.con_box03_1{width: 100%; margin-bottom: 2px; margin-top: 20px;}
+.con_box03_1 img{width: 100%;}
+.con_box03_1_left{float: left; width: 49%; margin-right: 2%;}
+.con_box03_1_right{float: right; width: 49%;}
+.box03_1_right_l{float: left; width: 49%; margin-right: 2%;}
+.box03_1_right_r{float: right; width: 49%;}
+
+.con_box03_2{width: 100%;}
+.con_box03_2 img{width: 100%;}
+.con_box03_2_left{float: left; width: 49%; margin-right: 2%;}
+.con_box03_2_right{float: right; width: 49%;}
+/*콘텐츠 03 박스 끝*/
+/*---콘텐츠 부분 끝---*/
+
+
+/*푸터 시작*/
+.footer{border-top: 1px #999 solid; padding: 50px 1% 60px 1%; background-color: #333;}
+.footer_left{float: left; margin-top: 5px;}   
+.footer_center{float: left; margin-left: 20px;}
+.f_center_box01{margin-bottom: 10px;}
+.f_center_box01 li{float: left; font-size: 14px; border-right: 1px #999 solid;
+                  padding: 0 17px;}
+    .f_center_box01 li:nth-child(6){border-right: none;}
+    .f_center_box01 li:nth-child(1) a{color: #f8901f;}
+.f_center_box01 li a{color: #999; font-weight: 400;}
+.f_center_box02{font-size: 15px; color: #999; margin-left: 16px;}
+.footer_right{float: right; width: 18%;}
+    .footer_right img{width: 90%;}
+/*푸터 끝*/
+    
+    
+}
+/*-------태블릿PC(패드형) 가로길이 561px ~ 960px일 때 닫기-------*/
+
+
+
+/*-------PC 가로길이 961px이상일 때 열기-------*/
+@media all and (min-width:961px){
+
+/*헤더 시작*/
+.header{width: 100%; height: 80px;}
+.logo{float: left; width: 20%; padding-top: 20px;}
+.menu{float: left; width: 60%;}
+.menu li{float: left; margin-left: 35px; text-align: center; padding-top: 30px; font-size: 15px; letter-spacing: 1px;}
+.r_menu{float: right;}
+.r_menu li{float: left; margin-left: 30px; padding-top: 30px;}
+    .r_menu li:nth-child(2) img{width: 65%;}
+    
+.hambuger_btn{display: none;}    
+    
+/*헤더 끝*/
+
+/*---콘텐츠 부분 시작---*/
+
+/*반복되는 제목스타일*/
+h1{font-size: 36px;}
+.h1_sub_txt{font-size: 16px; margin-bottom: 30px;}
+/*반복되는 제목스타일 끝*/
+
+/*메인이미지*/
+.main_img{width: 100%; margin-bottom: 100px;}
+.main_img img{width: 100%;}
+
+/*콘텐츠 01 박스 시작*/
+.main_con_box01{margin-bottom: 100px;}
+.con_box01_1{width: 100%; margin-top: 20px; margin-bottom: 50px;}
+.con_box01_1 img{width: 100%;}
+.con_box01_1_1{float: left; width: 49%; margin-right: 2%;}
+.con_box01_1_2{float: right; width: 49%;}
+
+/*box01_2 시작*/ 
+.con_box01_2_bg{width: 100%; background-image: url(../img/icon_bg.png); background-size: cover; background-repeat: no-repeat;}    
+.con_box01_2{width: 100%; height: 230px; text-align: center;}
+.con_box01_2 img{width: 48%}
+.box01_2_left{float: left; width: 23.5%; margin-right: 2%; height: 230px; padding-top: 50px;}
+.box01_2_right{float: right; width: 23.5%; height: 230px; padding-top: 50px;}
+/*콘텐츠 01 박스 끝*/
+
+/*콘텐츠 02 박스 시작*/
+.main_con_box02{margin-bottom: 100px;}
+.con_box02_1{width: 100%;}
+.con_box02_1 img{width: 100%;}
+.box02_1_left{float: left; width: 23.5%; margin-right: 2%;}
+.box02_1_right{float: right; width: 23.5%;}
+/*콘텐츠 02 박스 끝*/
+
+/*콘텐츠 03 박스 시작*/
+.main_con_box03{margin-bottom: 100px;}
+.con_box03_1{width: 100%; margin-bottom: 2px; margin-top: 20px;}
+.con_box03_1 img{width: 100%;}
+.con_box03_1_left{float: left; width: 49%; margin-right: 2%;}
+.con_box03_1_right{float: right; width: 49%;}
+.box03_1_right_l{float: left; width: 49%; margin-right: 2%;}
+.box03_1_right_r{float: right; width: 49%;}
+
+.con_box03_2{width: 100%;}
+.con_box03_2 img{width: 100%;}
+.con_box03_2_left{float: left; width: 49%; margin-right: 2%;}
+.con_box03_2_right{float: right; width: 49%;}
+/*콘텐츠 03 박스 끝*/
+/*---콘텐츠 부분 끝---*/
+
+
+/*푸터 시작*/
+.footer{border-top: 1px #999 solid; padding: 50px 0 60px 0; background-color: #333;}
+.footer_left{float: left; margin-top: 5px;}   
+.footer_center{float: left; margin-left: 20px;}
+.f_center_box01{margin-bottom: 10px;}
+.f_center_box01 li{float: left; font-size: 14px; border-right: 1px #999 solid;
+                  padding: 0 17px;}
+    .f_center_box01 li:nth-child(6){border-right: none;}
+    .f_center_box01 li:nth-child(1) a{color: #f8901f;}
+.f_center_box01 li a{color: #999; font-weight: 400;}
+.f_center_box02{font-size: 15px; color: #999; margin-left: 16px;}
+.footer_right{float: right; margin-right: -2.5%;}
+    .footer_right img{width: 90%;}
+/*푸터 끝*/
+    
+}
+/*-------PC 가로길이 961px이상일 때 닫기-------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

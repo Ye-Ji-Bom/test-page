@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/*Google fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+/*웹목업 html css*/
+.inner_box{width: 100%; max-width: 1900px; margin: 0 auto; padding-bottom: 50px;}
+.clear{clear: both;}
+
+#btnbox{width: 320px;}
+.btn1{ width: 150px; height: 50px; line-height: 50px; text-align: center; margin-top: 80px; background-color: #000; color: #fff; float: left; text-decoration: none}
+.btn2{ width: 150px; height: 50px; line-height: 50px; text-align: center;margin-top: 80px; background-color: #000; color: #fff; float: right; text-decoration: none}
+.btn1:hover{cursor: pointer; background-color: #666; color: #fff; text-decoration: none}
+.btn2:hover{cursor: pointer; background-color: #666; color: #fff; text-decoration: none}
+
+#btnbox2{width: 150px;}
+.btn2_1{ width: 150px; height: 50px; line-height: 50px; text-align: center; margin-top: 80px; background-color: #000; color: #fff; float: left; text-decoration: none}
+.btn2_1:hover{cursor: pointer; background-color: #666; color: #fff; text-decoration: none}
